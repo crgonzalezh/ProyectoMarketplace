@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.17% </span>
+                <span class="strong">75.86% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/29</span>
+                <span class='fraction'>22/29</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.17% </span>
+                <span class="strong">75.86% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/29</span>
+                <span class='fraction'>22/29</span>
             </div>
         
             
@@ -132,82 +132,82 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const pool = require('../config/db'); // Asegúrate de que la conexión a PostgreSQL esté configurada correctamente en `db.js`
+const pool = require('../config/db'); // Asegúrate de que db.js está correctamente configurado
 &nbsp;
 const register = async (req, res) =&gt; {
     try {
         const { nombre, correo, password } = req.body;
 &nbsp;
         // Verificar si el usuario ya existe
-        const existingUser = await pool.query('SELECT * FROM "Usuarios" WHERE correo = $1', [correo]);
-<span class="cstat-no" title="statement not covered" >        if (existingUser.rows.length &gt; 0) {</span>
+        const existingUser = await pool.query('SELECT * FROM usuarios WHERE correo = $1', [correo]);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (existingUser.rows.length &gt; 0) {
 <span class="cstat-no" title="statement not covered" >            return res.status(400).json({ error: 'El usuario ya existe' });</span>
         }
 &nbsp;
         // Hashear la contraseña antes de almacenarla
-        const hashedPassword = <span class="cstat-no" title="statement not covered" >await bcrypt.hash(password, 10);</span>
+        const hashedPassword = await bcrypt.hash(password, 10);
 &nbsp;
         // Insertar nuevo usuario en la base de datos
-<span class="cstat-no" title="statement not covered" >        await pool.query(</span>
-            'INSERT INTO "Usuarios" (nombre, correo, password) VALUES ($1, $2, $3)', 
+        await pool.query(
+            'INSERT INTO usuarios (nombre, correo, password, fecha_crea) VALUES ($1, $2, $3, CURRENT_DATE)', 
             [nombre, correo, hashedPassword]
         );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.status(201).json({ message: 'Usuario registrado con éxito' });</span>
+        res.status(201).json({ message: 'Usuario registrado con éxito' });
     } catch (error) {
-        console.error('Error en registro:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
+<span class="cstat-no" title="statement not covered" >        console.error('Error en registro:', error);</span>
+<span class="cstat-no" title="statement not covered" >        res.status(500).json({ error: 'Error interno del servidor' });</span>
     }
 };
 &nbsp;
@@ -216,26 +216,26 @@ const login = async (req, res) =&gt; {
         const { correo, password } = req.body;
 &nbsp;
         // Buscar usuario en la base de datos
-        const result = await pool.query('SELECT * FROM "Usuarios" WHERE correo = $1', [correo]);
-<span class="cstat-no" title="statement not covered" >        if (result.rows.length === 0) {</span>
+        const result = await pool.query('SELECT * FROM usuarios WHERE correo = $1', [correo]);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (result.rows.length === 0) {
 <span class="cstat-no" title="statement not covered" >            return res.status(401).json({ error: 'Credenciales incorrectas' });</span>
         }
 &nbsp;
-        const user = <span class="cstat-no" title="statement not covered" >result.rows[0];</span>
+        const user = result.rows[0];
 &nbsp;
         // Comparar la contraseña ingresada con la almacenada en la base de datos
-        const isMatch = <span class="cstat-no" title="statement not covered" >await bcrypt.compare(password, user.password);</span>
-<span class="cstat-no" title="statement not covered" >        if (!isMatch) {</span>
+        const isMatch = await bcrypt.compare(password, user.password);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!isMatch) {
 <span class="cstat-no" title="statement not covered" >            return res.status(401).json({ error: 'Credenciales incorrectas' });</span>
         }
 &nbsp;
         // Generar token JWT
-        const token = <span class="cstat-no" title="statement not covered" >jwt.sign({ id: user.id, correo: user.correo }, process.env.JWT_SECRET, { expiresIn: '1h' });</span>
+        const token = jwt.sign({ id: user.idusuario, correo: user.correo }, process.env.JWT_SECRET, { expiresIn: '1h' });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.json({ token });</span>
+        res.json({ token });
     } catch (error) {
-        console.error('Error en login:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
+<span class="cstat-no" title="statement not covered" >        console.error('Error en login:', error);</span>
+<span class="cstat-no" title="statement not covered" >        res.status(500).json({ error: 'Error interno del servidor' });</span>
     }
 };
 &nbsp;
@@ -247,7 +247,7 @@ module.exports = { register, login };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-11T04:11:16.355Z
+                at 2025-02-11T11:45:11.335Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

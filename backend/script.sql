@@ -1,68 +1,68 @@
-CREATE DATABASE tienda;
+create database tienda;
 
 \c tienda;
 
--- Tabla de Usuarios
-CREATE TABLE Usuarios (
-    idUsuario SERIAL PRIMARY KEY,
-    nombre VARCHAR(255),
-    password VARCHAR(255),
-    fechaCrea DATE,
-    correo VARCHAR(255) UNIQUE
+-- Tabla de usuarios
+create table usuarios (
+    id_usuario serial primary key,
+    nombre varchar(255),
+    password varchar(255),
+    fecha_crea date,
+    correo varchar(255) unique
 );
 
--- Tabla de Categorías
-CREATE TABLE Categorias (
-    idCategoria SERIAL PRIMARY KEY,
-    nombre VARCHAR(255)
+-- Tabla de categorías
+create table categorias (
+    id_categoria serial primary key,
+    nombre varchar(255)
 );
 
--- Tabla de Productos
-CREATE TABLE Productos (
-    idProducto SERIAL PRIMARY KEY,
-    sku VARCHAR(255) UNIQUE,
-    descripcion VARCHAR(255),
-    precio INTEGER,
-    stock INTEGER,
-    nombre VARCHAR(255),
-    fechaCrea DATE,
-    idCategoria INTEGER REFERENCES Categorias(idCategoria) ON DELETE CASCADE,
-    idUsuario INTEGER REFERENCES Usuarios(idUsuario) ON DELETE CASCADE
+-- Tabla de productos
+create table productos (
+    id_producto serial primary key,
+    sku varchar(255) unique,
+    descripcion varchar(255),
+    precio integer,
+    stock integer,
+    nombre varchar(255),
+    fecha_crea date,
+    id_categoria integer references categorias(id_categoria) on delete cascade,
+    id_usuario integer references usuarios(id_usuario) on delete cascade
 );
 
--- Tabla de Publicaciones
-CREATE TABLE Publicaciones (
-    idPublicacion SERIAL PRIMARY KEY,
-    titulo VARCHAR(255),
-    descripcion VARCHAR(255),
-    precio INTEGER,
-    fechaCrea DATE,
-    idUsuario INTEGER REFERENCES Usuarios(idUsuario) ON DELETE CASCADE,
-    idCategoria INTEGER REFERENCES Categorias(idCategoria) ON DELETE CASCADE
+-- Tabla de publicaciones
+create table publicaciones (
+    id_publicacion serial primary key,
+    titulo varchar(255),
+    descripcion varchar(255),
+    precio integer,
+    fecha_crea date,
+    id_usuario integer references usuarios(id_usuario) on delete cascade,
+    id_categoria integer references categorias(id_categoria) on delete cascade
 );
 
--- Tabla de Carritos
-CREATE TABLE Carritos (
-    idCarrito SERIAL PRIMARY KEY,
-    cantidad INTEGER,
-    idUsuario INTEGER REFERENCES Usuarios(idUsuario) ON DELETE CASCADE,
-    idProducto INTEGER REFERENCES Productos(idProducto) ON DELETE CASCADE
+-- Tabla de carritos
+create table carritos (
+    id_carrito serial primary key,
+    cantidad integer,
+    id_usuario integer references usuarios(id_usuario) on delete cascade,
+    id_producto integer references productos(id_producto) on delete cascade
 );
 
--- Tabla de Pedidos
-CREATE TABLE Pedidos (
-    idPedido SERIAL PRIMARY KEY,
-    estado VARCHAR(255),
-    precioTotal INTEGER,
-    fechaCrea DATE,
-    idUsuario INTEGER REFERENCES Usuarios(idUsuario) ON DELETE CASCADE
+-- Tabla de pedidos
+create table pedidos (
+    id_pedido serial primary key,
+    estado varchar(255),
+    precio_total integer,
+    fecha_crea date,
+    id_usuario integer references usuarios(id_usuario) on delete cascade
 );
 
--- Tabla de Detalles de Pedidos
-CREATE TABLE Detalles (
-    idDetalle SERIAL PRIMARY KEY,
-    cantidad INTEGER,
-    precio INTEGER,
-    idPedido INTEGER REFERENCES Pedidos(idPedido) ON DELETE CASCADE,
-    idProducto INTEGER REFERENCES Productos(idProducto) ON DELETE CASCADE
+-- Tabla de detalles de pedidos
+create table detalles (
+    id_detalle serial primary key,
+    cantidad integer,
+    precio integer,
+    id_pedido integer references pedidos(id_pedido) on delete cascade,
+    id_producto integer references productos(id_producto) on delete cascade
 );

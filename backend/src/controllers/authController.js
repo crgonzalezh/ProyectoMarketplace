@@ -1,13 +1,13 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const pool = require('../config/db'); // Asegúrate de que la conexión a PostgreSQL esté configurada correctamente en `db.js`
+const pool = require('../config/db'); // Asegúrate de que db.js está correctamente configurado
 
 const register = async (req, res) => {
     try {
         const { nombre, correo, password } = req.body;
 
         // Verificar si el usuario ya existe
-        const existingUser = await pool.query('SELECT * FROM "Usuarios" WHERE correo = $1', [correo]);
+        const existingUser = await pool.query('SELECT * FROM usuarios WHERE correo = $1', [correo]);
         if (existingUser.rows.length > 0) {
             return res.status(400).json({ error: 'El usuario ya existe' });
         }
@@ -17,7 +17,7 @@ const register = async (req, res) => {
 
         // Insertar nuevo usuario en la base de datos
         await pool.query(
-            'INSERT INTO "Usuarios" (nombre, correo, password) VALUES ($1, $2, $3)', 
+            'INSERT INTO usuarios (nombre, correo, password, fecha_crea) VALUES ($1, $2, $3, CURRENT_DATE)', 
             [nombre, correo, hashedPassword]
         );
 
@@ -33,7 +33,7 @@ const login = async (req, res) => {
         const { correo, password } = req.body;
 
         // Buscar usuario en la base de datos
-        const result = await pool.query('SELECT * FROM "Usuarios" WHERE correo = $1', [correo]);
+        const result = await pool.query('SELECT * FROM usuarios WHERE correo = $1', [correo]);
         if (result.rows.length === 0) {
             return res.status(401).json({ error: 'Credenciales incorrectas' });
         }
@@ -47,7 +47,7 @@ const login = async (req, res) => {
         }
 
         // Generar token JWT
-        const token = jwt.sign({ id: user.id, correo: user.correo }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.idusuario, correo: user.correo }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ token });
     } catch (error) {
