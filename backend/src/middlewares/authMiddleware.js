@@ -1,17 +1,28 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const verifyToken = (req, res, next) => {
-    const token = req.header('Authorization');
-    if (!token) return res.status(401).json({ message: 'Acceso denegado' });
+const authMiddleware = (req, res, next) => {
+    const authHeader = req.header("Authorization");
+    console.log("Header recibido en middleware:", authHeader);
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        console.log("Error: Token no proporcionado o mal formado");
+        return res.status(400).json({ error: "Token no proporcionado o mal formado" });
+    }
+
+    const token = authHeader.split(" ")[1];
+    console.log("Token extraído:", token);
 
     try {
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = verified;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Token decodificado correctamente:", decoded);
+        req.user = decoded;
         next();
     } catch (error) {
-        res.status(400).json({ message: 'Token inválido' });
+        console.error("Error de validación JWT:", error);
+        return res.status(401).json({ error: "Token inválido" });
     }
 };
 
-module.exports = verifyToken;
+module.exports = authMiddleware;
+

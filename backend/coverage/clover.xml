@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1739274311353" clover="3.2.0">
-  <project timestamp="1739274311353" name="All files">
-    <metrics statements="182" coveredstatements="107" conditionals="24" coveredconditionals="7" methods="18" coveredmethods="3" elements="224" coveredelements="117" complexity="0" loc="182" ncloc="182" packages="5" files="11" classes="11"/>
+<coverage generated="1739278960366" clover="3.2.0">
+  <project timestamp="1739278960366" name="All files">
+    <metrics statements="189" coveredstatements="113" conditionals="26" coveredconditionals="9" methods="18" coveredmethods="4" elements="233" coveredelements="126" complexity="0" loc="189" ncloc="189" packages="5" files="11" classes="11"/>
     <package name="src">
       <metrics statements="28" coveredstatements="23" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="0"/>
       <file name="index.js" path="C:\Users\crgon\Desktop\DesafioLatam\ProyectoFinal\hito3\backend\src\index.js">
@@ -161,24 +161,31 @@
       </file>
     </package>
     <package name="src.middlewares">
-      <metrics statements="11" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="18" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
       <file name="authMiddleware.js" path="C:\Users\crgon\Desktop\DesafioLatam\ProyectoFinal\hito3\backend\src\middlewares\authMiddleware.js">
-        <metrics statements="11" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="18" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.routes">
-      <metrics statements="37" coveredstatements="35" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="37" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="authRoutes.js" path="C:\Users\crgon\Desktop\DesafioLatam\ProyectoFinal\hito3\backend\src\routes\authRoutes.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -215,12 +222,12 @@
         <line num="22" count="1" type="stmt"/>
       </file>
       <file name="protectedRoutes.js" path="C:\Users\crgon\Desktop\DesafioLatam\ProyectoFinal\hito3\backend\src\routes\protectedRoutes.js">
-        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
       <file name="userRoutes.js" path="C:\Users\crgon\Desktop\DesafioLatam\ProyectoFinal\hito3\backend\src\routes\userRoutes.js">
