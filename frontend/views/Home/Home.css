@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px 60px;
+    width: 100%;
+  }
+  
+  .text-center {
+    margin-top: 100px; /* Ajusta el margen para que no quede oculto detrás del navbar */
+  }
+  

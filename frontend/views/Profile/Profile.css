@@ -1,0 +1,71 @@
+/* Estilos generales para centrar el contenido */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  /* Contenedor general del perfil */
+  .profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 100vh;
+  }
+  
+  .profile-container {
+    display: flex;
+    margin-top: 20px;
+    background-color: #ffcc00;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .sidebar {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    width: 200px;
+  }
+  
+  .sidebar p {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .logout-button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 3px;
+  }
+  
+  .profile-content {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .profile-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+  

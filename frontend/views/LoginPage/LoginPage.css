@@ -1,0 +1,47 @@
+/* Estilos para centrar el formulario en la página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Fondo gris claro para la página */
+  }
+  
+  .login-container {
+    background-color: #ffcc00; /* Fondo amarillo para el formulario */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px; /* Ancho del formulario */
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button[type="submit"] {
+    background-color: #28a745; /* Fondo verde para el botón de enviar */
+    color: white;
+    font-weight: bold;
+  }
+  

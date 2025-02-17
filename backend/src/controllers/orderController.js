@@ -4,7 +4,7 @@ const getOrders = async (req, res) => {
     try {
         const { idUsuario } = req.user; 
 
-        const result = await pool.query('SELECT * FROM Pedidos WHERE idUsuario = $1', [idUsuario]);
+        const result = await pool.query('SELECT * FROM pedidos WHERE idUsuario = $1', [idUsuario]);
         res.json(result.rows);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -16,7 +16,7 @@ const getOrderById = async (req, res) => {
         const { id } = req.params;
         const { idUsuario } = req.user;
 
-        const result = await pool.query('SELECT * FROM Pedidos WHERE idPedido = $1 AND idUsuario = $2', [id, idUsuario]);
+        const result = await pool.query('SELECT * FROM pedidos WHERE idPedido = $1 AND idUsuario = $2', [id, idUsuario]);
 
         if (result.rows.length === 0) return res.status(404).json({ message: 'Pedido no encontrado' });
 
@@ -32,7 +32,7 @@ const createOrder = async (req, res) => {
         const { precioTotal } = req.body;
 
         const result = await pool.query(
-            'INSERT INTO Pedidos (idUsuario, precioTotal, estado, fechaCrea) VALUES ($1, $2, $3, NOW()) RETURNING *',
+            'INSERT INTO pedidos (idUsuario, precioTotal, estado, fechaCrea) VALUES ($1, $2, $3, NOW()) RETURNING *',
             [idUsuario, precioTotal, 'Pendiente']
         );
 
@@ -48,7 +48,7 @@ const updateOrderStatus = async (req, res) => {
         const { estado } = req.body;
 
         const result = await pool.query(
-            'UPDATE Pedidos SET estado = $1 WHERE idPedido = $2 RETURNING *',
+            'UPDATE pedidos SET estado = $1 WHERE idPedido = $2 RETURNING *',
             [estado, id]
         );
 
@@ -64,7 +64,7 @@ const deleteOrder = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await pool.query('DELETE FROM Pedidos WHERE idPedido = $1 RETURNING *', [id]);
+        const result = await pool.query('DELETE FROM pedidos WHERE idPedido = $1 RETURNING *', [id]);
 
         if (result.rows.length === 0) return res.status(404).json({ message: 'Pedido no encontrado' });
 

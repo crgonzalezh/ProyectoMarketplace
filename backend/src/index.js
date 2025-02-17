@@ -19,7 +19,7 @@ app.use(express.json());
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/products', productRoutes);
+app.use('/api/productos', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/protegida', protectedRoutes); // 🔹 Agregado
 

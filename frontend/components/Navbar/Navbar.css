@@ -1,0 +1,51 @@
+.navbar {
+    position: fixed; /* Fija la barra en la parte superior */
+    top: 0;
+    width: 100%;
+    background-color: #282626; /* Color de fondo gris */
+    padding: 10px;
+    z-index: 1000; /* Asegúrate de que la barra esté por encima del contenido */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbar-brand {
+    color: rgb(236, 236, 239);
+    text-decoration: none;
+    font-size: 1.5em;
+  }
+  
+  input[type="search"] {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: yellow;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: orange;
+  }
+
+  .navbar-title {
+    color: #ede8e8;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
