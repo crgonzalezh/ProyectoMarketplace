@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
 export default defineConfig({
+  base: "./", // Asegura rutas relativas para despliegue en Vercel
   plugins: [react()],
   build: {
     outDir: 'dist',
@@ -11,10 +12,13 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
       },
     },
-    // 🔹 Agregar esta opción para copiar `_redirects` a `dist/`
-    copyPublicDir: false
   },
   server: {
     host: true,
+    port: 5173, // Puerto por defecto de Vite
+  },
+  define: {
+    'process.env': {} // Previene errores con algunas dependencias en Vercel
   }
 });
+
