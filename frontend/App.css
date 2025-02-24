@@ -1,9 +1,14 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 1rem; /* Reduce el padding horizontal para ajustar la visualización */
+  padding: 2rem 1rem;
   text-align: center;
-  margin-top: 100px; /* Asegura espacio suficiente para el navbar */
+  margin-top: 120px; /* Aumentamos el espacio para evitar superposición */
+}
+
+.main-content {
+  margin-top: 80px; /* Asegura que el contenido no quede bajo el navbar */
+  padding: 20px;
 }
 
 .logo {

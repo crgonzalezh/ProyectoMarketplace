@@ -1,12 +1,18 @@
 .navbar {
-    position: fixed; /* Fija la barra en la parte superior */
-    top: 0;
-    width: 100%;
-    background-color: #282626; /* Color de fondo gris */
-    padding: 10px;
-    z-index: 1000; /* Asegúrate de que la barra esté por encima del contenido */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  z-index: 1000; /* Asegura que el navbar esté encima de otros elementos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
   
   .nav {
     display: flex;
