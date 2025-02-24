@@ -10,70 +10,72 @@ const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const { login: authLogin } = useContext(AuthContext);
 
+  // 🔹 URL del backend
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
   useEffect(() => {
-    const tokenStorage = localStorage.getItem('token');
-    if (tokenStorage) {
-      setToken(tokenStorage);
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
     }
   }, []);
 
-  const login = async (email, password) => {
+  // 🔹 Función para iniciar sesión
+  const login = async (correo, password) => {
     try {
-      const loginData = { correo: email, password: password };
-      const response = await fetch('http://localhost:3000/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginData)
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ correo, password }),
       });
+
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Error de autenticación');
+        throw new Error(data.error || "Error de autenticación");
       }
 
       if (data.token) {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem("token", data.token);
         setToken(data.token);
         setEmail(data.user.correo);
-        authLogin({ email: data.user.correo, name: "Nombre del Usuario" });  // Actualiza el contexto de autenticación
+        navigate("/nanomarket/profile"); // Solo si es exitoso
       }
     } catch (error) {
-      console.error('Error completo:', { message: error.message, details: error });
+      console.error("Error en login:", error.message);
+      alert(error.message); // Muestra el error al usuario
     }
   };
 
+  // 🔹 Manejo del formulario de login
   const handleLoginSubmit = async (e, loginData) => {
     e.preventDefault();
-    try {
-      await login(loginData.email, loginData.password);
-      navigate("/nanomarket/profile");  // Redirige al perfil
-    } catch (error) {
-      console.error('Error en el login:', error);
-    }
+    await login(loginData.correo, loginData.password);
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setToken(null);
-    setEmail(null);
-    authLogin(null);  // Actualiza el contexto de autenticación
-    navigate('/nanomarket');
-  };
-
-  const register = async (nombre, email, password) => {
+  // 🔹 Función para registrar usuario
+  const register = async (nombre, correo, password) => {
     try {
-      const response = await fetch('http://localhost:3000/api/register', {
-        method: 'POST',
+      const response = await fetch(`${API_URL}/api/auth/register`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, email, password })
+        body: JSON.stringify({ nombre, correo, password }),
       });
+
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Error en el registro");
+      }
+
       return data;
     } catch (error) {
-      console.log(error);
+      console.error("Error en el registro:", error.message);
+      alert(error.message);
     }
   };
 
+  // 🔹 Manejo del formulario de registro
   const handleRegisterSubmit = async (e, registerData) => {
     e.preventDefault();
     try {
@@ -81,16 +83,35 @@ const UserProvider = ({ children }) => {
         alert("Las contraseñas no coinciden");
         return;
       }
-      await register(registerData.nombre, registerData.email, registerData.password);
-      await login(registerData.email, registerData.password);
-      navigate("/nanomarket/profile");  // Redirige al perfil
+
+      await register(registerData.nombre, registerData.correo, registerData.password);
+      await login(registerData.correo, registerData.password);
     } catch (error) {
-      console.error('Error en el registro:', error);
+      console.error("Error en el registro:", error.message);
     }
   };
 
+  // 🔹 Función para cerrar sesión
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    setEmail(null);
+    authLogin(null);
+    navigate("/nanomarket");
+  };
+
   return (
-    <UserContext.Provider value={{ token, email, login, register, logout, handleRegisterSubmit, handleLoginSubmit }}>
+    <UserContext.Provider
+      value={{
+        token,
+        email,
+        login,
+        register,
+        logout,
+        handleRegisterSubmit,
+        handleLoginSubmit,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
