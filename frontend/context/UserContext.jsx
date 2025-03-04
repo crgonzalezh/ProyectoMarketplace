@@ -23,6 +23,13 @@ const UserProvider = ({ children }) => {
   // 🔹 Función para iniciar sesión
   const login = async (correo, password) => {
     try {
+      if (!correo || !password) {
+        alert("Todos los campos son obligatorios");
+        return;
+      }
+
+      console.log("Enviando datos al backend (login):", { correo, password });
+
       const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,6 +37,7 @@ const UserProvider = ({ children }) => {
       });
 
       const data = await response.json();
+      console.log("Respuesta del backend (login):", data);
 
       if (!response.ok) {
         throw new Error(data.error || "Error de autenticación");
@@ -39,11 +47,11 @@ const UserProvider = ({ children }) => {
         localStorage.setItem("token", data.token);
         setToken(data.token);
         setEmail(data.user.correo);
-        navigate("/nanomarket/profile"); // Solo si es exitoso
+        navigate("/nanomarket/profile");
       }
     } catch (error) {
       console.error("Error en login:", error.message);
-      alert(error.message); // Muestra el error al usuario
+      alert(error.message);
     }
   };
 
@@ -56,6 +64,13 @@ const UserProvider = ({ children }) => {
   // 🔹 Función para registrar usuario
   const register = async (nombre, correo, password) => {
     try {
+      if (!nombre || !correo || !password) {
+        alert("Todos los campos son obligatorios");
+        return;
+      }
+
+      console.log("Enviando datos al backend (registro):", { nombre, correo, password });
+
       const response = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -63,6 +78,7 @@ const UserProvider = ({ children }) => {
       });
 
       const data = await response.json();
+      console.log("Respuesta del backend (registro):", data);
 
       if (!response.ok) {
         throw new Error(data.error || "Error en el registro");
@@ -78,14 +94,24 @@ const UserProvider = ({ children }) => {
   // 🔹 Manejo del formulario de registro
   const handleRegisterSubmit = async (e, registerData) => {
     e.preventDefault();
+
     try {
+      if (!registerData.nombre || !registerData.correo || !registerData.password || !registerData.confirmPassword) {
+        alert("Todos los campos son obligatorios");
+        return;
+      }
+
       if (registerData.password !== registerData.confirmPassword) {
         alert("Las contraseñas no coinciden");
         return;
       }
 
-      await register(registerData.nombre, registerData.correo, registerData.password);
-      await login(registerData.correo, registerData.password);
+      const data = await register(registerData.nombre, registerData.correo, registerData.password);
+
+      if (data) {
+        console.log("Usuario registrado con éxito:", data);
+        await login(registerData.correo, registerData.password);
+      }
     } catch (error) {
       console.error("Error en el registro:", error.message);
     }

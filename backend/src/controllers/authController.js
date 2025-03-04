@@ -6,6 +6,8 @@ const secretKey = process.env.JWT_SECRET || 'secretoSuperSeguro';
 
 // 🔹 Registro de usuario
 exports.register = async (req, res) => {
+    console.log("Datos recibidos en el backend:", req.body); // <-- Este log debe estar dentro de la función
+
     const { nombre, correo, password } = req.body;
 
     if (!nombre || !correo || !password) {
@@ -33,18 +35,12 @@ exports.register = async (req, res) => {
         console.error("Error en el registro:", error);
         res.status(500).json({ error: "Error en el servidor" });
     }
-    exports.register = async (req, res) => {
-        console.log("Datos recibidos:", req.body); // <-- AGREGAR ESTO
-        const { nombre, correo, password } = req.body;
-        if (!nombre || !correo || !password) {
-            return res.status(400).json({ error: "Todos los campos son obligatorios" });
-        }
-        // Continúa con el registro...
-    };
 };
 
 // 🔹 Inicio de sesión
 exports.login = async (req, res) => {
+    console.log("Intentando iniciar sesión con:", req.body); // <-- Agregar log para depurar
+
     const { correo, password } = req.body;
 
     if (!correo || !password) {
